@@ -1,4 +1,6 @@
-﻿namespace DevHabit.api.DTOs.Tags;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DevHabit.api.DTOs.Tags;
 
 public sealed record CreateTagDto
 {
