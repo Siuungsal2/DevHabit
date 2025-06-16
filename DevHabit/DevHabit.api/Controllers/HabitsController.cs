@@ -50,12 +50,14 @@ public sealed class HabitsController(ApplicationDbContext dbContext) : Controlle
     public async Task<ActionResult<HabitDto>> CreateHabit(CreateHabitDto createHabitDto,
         IValidator<CreateHabitDto> validator)
     {
-        ValidationResult validationResult = await validator.ValidateAsync(createHabitDto);
+        await validator.ValidateAndThrowAsync(createHabitDto);
 
-        if (!validationResult.IsValid)
-        {
-            return BadRequest(validationResult.ToDictionary());
-        }
+        //ValidationResult validationResult = await validator.ValidateAsync(createHabitDto);
+
+        //if (!validationResult.IsValid)
+        //{
+        //    return BadRequest(validationResult.ToDictionary());
+        //}
 
         Habit habit = createHabitDto.ToEntity();
 
